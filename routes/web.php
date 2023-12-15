@@ -38,12 +38,18 @@ Route::put('admin/cars/update-image/{id}',[\App\Http\Controllers\Admin\CarContro
 Route::get('messages', [\App\Http\Controllers\Admin\MessageController::class, 'index'])->name('messages.index');
 Route::get('messages/{car}', [\App\Http\Controllers\Admin\MessageController::class, 'destroy'])->name('messages.destroy');
 
-Route::get('/login',[LoginController::class, 'index'])->middleware('guest');
-// ->name('login')->middleware('guest');
-Route::post('/login',[LoginController::class, 'login']);
+// Route::get('/login',[LoginController::class, 'index'])->middleware('guest');
+// // ->name('login')->middleware('guest');
+// Route::post('/login',[LoginController::class, 'login']);
 
-Route::get('/register',[RegisterController::class, 'index']);
+Route::get('/register',[RegisterController::class, 'index'])->name('register');
 Route::post('/register',[RegisterController::class, 'store']);
+
+Route::redirect('/register', '/login');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+
+
 
 
 Auth::routes();
