@@ -1,6 +1,5 @@
 @extends('layouts.frontend')
 
-
 @section('content')
  <!-- carousel -->
 <div class="" id="Beranda">
